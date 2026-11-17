@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Palette Studio — Color Inspiration for Artists & Designers</title>
+  <meta name="description" content="Discover beautiful five-color combinations, explore palettes by mood and style, generate random harmonies, and save your favorites.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Announcement / Header Top Bar -->
+  <header class="site-header">
+    <div class="container header-container">
+      <a href="#home" class="brand-logo" aria-label="Palette Studio Home">
+        <span class="logo-mark" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+            <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+            <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+            <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C21.437 6.438 17.5 2 12 2z"></path>
+          </svg>
+        </span>
+        <span class="brand-name">Palette Studio</span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <nav class="main-nav" aria-label="Primary Navigation">
+        <ul class="nav-links">
+          <li><a href="#home" class="nav-link active">Home</a></li>
+          <li><a href="#generator" class="nav-link">Generator</a></li>
+          <li><a href="#explore" class="nav-link">Moods & Styles</a></li>
+          <li>
+            <a href="#favorites" class="nav-link favorites-link">
+              Favorites
+              <span id="fav-count-badge" class="badge-count" aria-label="0 saved palettes">0</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+        <span class="hamburger-bar"></span>
+      </button>
+    </div>
+
+    <!-- Mobile Dropdown Navigation -->
+    <div class="mobile-nav-panel" id="mobileNavPanel">
+      <ul class="mobile-nav-links">
+        <li><a href="#home" class="mobile-nav-link">Home</a></li>
+        <li><a href="#generator" class="mobile-nav-link">Generator</a></li>
+        <li><a href="#explore" class="mobile-nav-link">Moods & Styles</a></li>
+        <li>
+          <a href="#favorites" class="mobile-nav-link">
+            Favorites (<span id="mobile-fav-count">0</span>)
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- SECTION 1: HERO & HOME -->
+    <section id="home" class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">Curated Color Sanctuary</div>
+          <h1 class="hero-title">Discover beautiful color combinations for your art.</h1>
+          <p class="hero-description">
+            Palette Studio is a modern creative studio created to help artists, illustrators, and designers discover color inspiration. Explore palettes crafted for moods and aesthetics, generate random five-color harmonies, and build your personal collection.
+          </p>
+          <div class="hero-actions">
+            <a href="#generator" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+              </svg>
+              Generate Palette
+            </a>
+            <a href="#explore" class="btn btn-secondary">Explore Moods & Styles</a>
+          </div>
+        </div>
+
+        <!-- Featured Palette Showcase Card -->
+        <div class="hero-featured">
+          <div class="featured-card card" id="featuredPaletteCard">
+            <div class="featured-card-header">
+              <div class="featured-meta">
+                <span class="tag-label">Featured Palette</span>
+                <h3 class="featured-name" id="featuredTitle">Lavender Twilight</h3>
+                <div class="featured-tags">
+                  <span class="pill pill-mood" id="featuredMood">Dreamy</span>
+                  <span class="pill pill-style" id="featuredStyle">Pastel</span>
+                </div>
+              </div>
+              <div class="featured-actions">
+                <button class="btn-icon" id="featuredFavBtn" title="Save to Favorites" aria-label="Save featured palette to favorites">
+                  <svg class="heart-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                  </svg>
+                </button>
+                <button class="btn-icon" id="featuredNextBtn" title="Show Another Featured Palette" aria-label="Show another featured palette">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                  </svg>
+                </button>
+              </div>
+            </div>
+
+            <!-- Swatches for Featured Palette -->
+            <div class="featured-swatches" id="featuredSwatches">
+              <!-- Rendered via JavaScript -->
+            </div>
+
+            <div class="featured-card-footer">
+              <p class="featured-tip">Click any color swatch to copy its HEX code</p>
+              <button class="btn-text" id="featuredCopyAllBtn">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy All HEX
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: RANDOM PALETTE GENERATOR -->
+    <section id="generator" class="section generator-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Interactive Studio</span>
+          <h2 class="section-title">Random Palette Generator</h2>
+          <p class="section-subtitle">
+            Generate fresh five-color combinations instantly. Lock any color you love to keep it while generating new companion tones, or click any swatch to copy its HEX code.
+          </p>
+        </div>
+
+        <!-- Generator Workspace Card -->
+        <div class="generator-card card">
+          <div class="generator-toolbar">
+            <div class="generator-title-wrap">
+              <span class="generator-palette-name" id="generatorPaletteName">Spring Sunrise</span>
+              <span class="generator-hint">Press <kbd class="kbd-badge">Spacebar</kbd> or click Generate</span>
+            </div>
+            <div class="generator-toolbar-actions">
+              <button class="btn btn-outline" id="generatorFavBtn" aria-label="Save this generated palette to favorites">
+                <svg class="heart-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                <span id="generatorFavBtnText">Save to Favorites</span>
+              </button>
+              <button class="btn btn-outline" id="generatorCopyAllBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
+                Copy All HEX
+              </button>
+              <button class="btn btn-primary" id="generateNewBtn">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path>
+                </svg>
+                Generate Palette
+              </button>
+            </div>
+          </div>
+
+          <!-- 5 Color Swatch Columns -->
+          <div class="generator-swatches" id="generatorSwatches" role="region" aria-label="Five color swatches">
+            <!-- Rendered via JavaScript -->
+          </div>
+
+          <div class="generator-instructions">
+            <div class="instruction-item">
+              <span class="instruction-icon" aria-hidden="true">👆</span>
+              <span><strong>Click swatch:</strong> Copies HEX code to your clipboard</span>
+            </div>
+            <div class="instruction-item">
+              <span class="instruction-icon" aria-hidden="true">🔒</span>
+              <span><strong>Click lock:</strong> Preserves that color when generating new palettes</span>
+            </div>
+            <div class="instruction-item">
+              <span class="instruction-icon" aria-hidden="true">⌨️</span>
+              <span><strong>Spacebar:</strong> Quick keyboard shortcut to generate</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: EXPLORE MOODS & STYLES -->
+    <section id="explore" class="section explore-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Curated Collections</span>
+          <h2 class="section-title">Explore by Mood & Style</h2>
+          <p class="section-subtitle">
+            Find the perfect harmony for your canvas. Filter through expressive moods and distinct aesthetic styles tailored for artistic projects.
+          </p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filters-container">
+          <!-- Mood Categories Filter -->
+          <div class="filter-group">
+            <div class="filter-label-wrap">
+              <span class="filter-title">Mood Categories</span>
+              <span class="filter-hint">Choose emotional atmosphere</span>
+            </div>
+            <div class="filter-pills" id="moodFilters" role="radiogroup" aria-label="Filter by mood">
+              <button class="filter-pill active" data-filter-type="mood" data-value="all">All Moods</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Dreamy">Dreamy</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Cozy">Cozy</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Romantic">Romantic</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Peaceful">Peaceful</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Mysterious">Mysterious</button>
+              <button class="filter-pill" data-filter-type="mood" data-value="Energetic">Energetic</button>
+            </div>
+          </div>
+
+          <!-- Color Styles Filter -->
+          <div class="filter-group">
+            <div class="filter-label-wrap">
+              <span class="filter-title">Color Styles</span>
+              <span class="filter-hint">Choose aesthetic finish</span>
+            </div>
+            <div class="filter-pills" id="styleFilters" role="radiogroup" aria-label="Filter by style">
+              <button class="filter-pill active" data-filter-type="style" data-value="all">All Styles</button>
+              <button class="filter-pill" data-filter-type="style" data-value="Pastel">Pastel</button>
+              <button class="filter-pill" data-filter-type="style" data-value="Earthy">Earthy</button>
+              <button class="filter-pill" data-filter-type="style" data-value="Vibrant">Vibrant</button>
+              <button class="filter-pill" data-filter-type="style" data-value="Muted">Muted</button>
+              <button class="filter-pill" data-filter-type="style" data-value="Monochromatic">Monochromatic</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Results Counter & Search / Reset -->
+        <div class="explore-status-bar">
+          <span class="results-count" id="resultsCount">Showing all palettes</span>
+          <button class="btn-text" id="resetFiltersBtn" style="display: none;">Reset Filters</button>
+        </div>
+
+        <!-- Palettes Grid -->
+        <div class="palettes-grid" id="palettesGrid" aria-live="polite">
+          <!-- Rendered via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: FAVORITES -->
+    <section id="favorites" class="section favorites-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-kicker">Personal Collection</span>
+          <h2 class="section-title">Saved Favorite Palettes</h2>
+          <p class="section-subtitle">
+            Your saved palettes are stored securely in your browser's local storage. They remain here even when you refresh or revisit Palette Studio.
+          </p>
+        </div>
+
+        <!-- Favorites Top Bar -->
+        <div class="favorites-toolbar" id="favoritesToolbar" style="display: none;">
+          <span class="favorites-stat" id="favoritesStatText">You have saved 0 palettes</span>
+          <button class="btn-text danger" id="clearAllFavoritesBtn">Clear All Favorites</button>
+        </div>
+
+        <!-- Favorites Grid -->
+        <div class="palettes-grid" id="favoritesGrid">
+          <!-- Rendered via JavaScript -->
+        </div>
+
+        <!-- Empty State (Shown when no favorites) -->
+        <div class="favorites-empty card" id="favoritesEmptyState">
+          <div class="empty-icon" aria-hidden="true">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#B9A2CC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+          </div>
+          <h3 class="empty-title">No favorite palettes yet</h3>
+          <p class="empty-description">
+            Whenever you find a color palette you love in the Generator or Explore sections, click the heart icon to save it here.
+          </p>
+          <a href="#generator" class="btn btn-secondary">Try the Generator</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <div class="brand-logo footer-logo">
+          <span class="logo-mark" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+              <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+              <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+              <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+              <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.563-2.512 5.563-5.563C21.437 6.438 17.5 2 12 2z"></path>
+            </svg>
+          </span>
+          <span class="brand-name">Palette Studio</span>
+        </div>
+        <p class="footer-tagline">
+          A modern, creative color studio for artists, illustrators, and designers. Discover, generate, and curate colors that inspire your imagination.
+        </p>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-heading">Moods</h4>
+        <ul class="footer-links">
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Dreamy')">Dreamy</a></li>
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Cozy')">Cozy</a></li>
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Romantic')">Romantic</a></li>
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Peaceful')">Peaceful</a></li>
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Mysterious')">Mysterious</a></li>
+          <li><a href="#explore" onclick="filterByFooter('mood', 'Energetic')">Energetic</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-heading">Styles</h4>
+        <ul class="footer-links">
+          <li><a href="#explore" onclick="filterByFooter('style', 'Pastel')">Pastel</a></li>
+          <li><a href="#explore" onclick="filterByFooter('style', 'Earthy')">Earthy</a></li>
+          <li><a href="#explore" onclick="filterByFooter('style', 'Vibrant')">Vibrant</a></li>
+          <li><a href="#explore" onclick="filterByFooter('style', 'Muted')">Muted</a></li>
+          <li><a href="#explore" onclick="filterByFooter('style', 'Monochromatic')">Monochromatic</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h4 class="footer-heading">Studio Tips</h4>
+        <p class="footer-tip-text">
+          Use the <strong>60-30-10</strong> principle: 60% dominant color for atmosphere, 30% secondary color for shapes, and 10% accent color for focal highlights.
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p class="copyright">Designed with care for creators &bull; Vanilla HTML, CSS & JavaScript</p>
+        <a href="#home" class="back-to-top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <span class="toast-icon">✓</span>
+    <span class="toast-message" id="toastMessage">Copied to clipboard!</span>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
